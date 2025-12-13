@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>鸢尾花分类器</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 40px auto; padding: 20px; }
+        .input-group { margin: 10px 0; }
+        label { display: inline-block; width: 150px; }
+        input { padding: 5px; width: 100px; }
+        button { padding: 8px 16px; background: #4CAF50; color: white; border: none; cursor: pointer; }
+        #result { margin-top: 20px; font-size: 1.2em; font-weight: bold; color: #2196F3; }
+    </style>
+</head>
+<body>
+    <h1>鸢尾花 AI 分类器</h1>
+    <p>请输入花的四个尺寸（单位：cm）：</p>
+
+    <div class="input-group">
+        <label>花萼长度:</label>
+        <input type="number" id="sl" value="5.1" step="0.1">
+    </div>
+    <div class="input-group">
+        <label>花萼宽度:</label>
+        <input type="number" id="sw" value="3.5" step="0.1">
+    </div>
+    <div class="input-group">
+        <label>花瓣长度:</label>
+        <input type="number" id="pl" value="1.4" step="0.1">
+    </div>
+    <div class="input-group">
+        <label>花瓣宽度:</label>
+        <input type="number" id="pw" value="0.2" step="0.1">
+    </div>
+
+    <button onclick="predict()"> 预测花的种类</button>
+    <div id="result"></div>
+
+    <script>
+        async function predict() {
+            // 获取输入值
+            const features = [
+                parseFloat(document.getElementById('sl').value),
+                parseFloat(document.getElementById('sw').value),
+                parseFloat(document.getElementById('pl').value),
+                parseFloat(document.getElementById('pw').value)
+            ];
+
+            // 检查是否为有效数字
+            if (features.some(isNaN)) {
+                alert("请输入有效的数字！");
+                return;
+            }
+
+            try {
+                // 调用你的 Flask API
+                const response = await fetch('http://localhost:5000/predict', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ features: features })
+                });
+
+                const data = await response.json();
+                console.log(data)
+
+                if (data.success) {
+                    document.getElementById('result').innerText = 
+                        `预测结果：这是一朵 ${data.prediction}！`;
+                } else {
+                    document.getElementById('result').innerText = 
+                        `预测失败：${data.error}`;
+                }
+            } catch (error) {
+                document.getElementById('result').innerText = 
+                    `网络错误：请确保 Flask 服务正在运行！`;
+                console.error("Error:", error);
+            }
+        }
+    </script>
+</body>
+</html>
