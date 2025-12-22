@@ -10,3 +10,4 @@ Day 8:Flask AI Web API
 Day 9:前端网页 + AI后端联调
 Day 10:云函数部署(没完成)
 Day 11:模型评估与优化
+Day 12:特征工程与 Pipeline
