@@ -11,3 +11,9 @@ Day 9:前端网页 + AI后端联调
 Day 10:云函数部署(没完成)
 Day 11:模型评估与优化
 Day 12:特征工程与 Pipeline
+Day 13:回归任务实战  
+  - 初始使用 LinearRegression，出现负数预测  
+  - 改用 RandomForestRegressor，结果合理
+  - 虽然 LinearRegression 的 R² (0.618) 略高于 RandomForest (0.580)，
+  - 但线性模型会输出负房价（违反业务逻辑），
+  - 因此选择 RandomForest 作为 v1 回归模型 —— **可靠性优先于微小指标优势**。
