@@ -1,0 +1,18 @@
+[
+  {
+    "model_name": "Random Forest(调优后)",
+    "mae": 0.3881,
+    "rmse": 0.4892,
+    "r2": 0.4109,
+    "negative_predictions": 0,
+    "is_business_safe": true
+  },
+  {
+    "model_name": "Random Forest(调优前)",
+    "mae": 0.3903,
+    "rmse": 0.4917,
+    "r2": 0.4049,
+    "negative_predictions": 0,
+    "is_business_safe": true
+  }
+]
