@@ -1,0 +1,18 @@
+[
+  {
+    "model_name": "Linear Regression",
+    "mae": 0.3802,
+    "rmse": 0.4792,
+    "r2": 0.4347,
+    "negative_predictions": 0,
+    "is_business_safe": true
+  },
+  {
+    "model_name": "Random Forest",
+    "mae": 0.3903,
+    "rmse": 0.4917,
+    "r2": 0.4049,
+    "negative_predictions": 0,
+    "is_business_safe": true
+  }
+]
