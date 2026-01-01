@@ -20,3 +20,4 @@ Day 13:回归任务实战
 Day 14: 模型版本管理与 A/B 测试（支持离线数据）
 Day 15: 超参数调优（RandomizedSearchCV），RF v2 R² 提升至 0.4109
 Day 16:统一预测 API（FastAPI + Pydantic）
+Day 17:使用 Docker 容器化 FastAPI 服务，实现一键部署
